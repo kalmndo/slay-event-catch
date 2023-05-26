@@ -1,11 +1,11 @@
 const express = require('express');
 const axios = require('axios');
-const FormData = require('form-data');
 const app = express();
 const port = 3000;
 const cors = require('cors');
+const spawn = require('child_process').spawn;
 
-const url = 'http://localhost:1500/api/';
+const url = 'http://127.0.0.1:1500/api/';
 
 const COMMAND = {
   START: 'start?mode=print&&',
@@ -13,19 +13,16 @@ const COMMAND = {
   SHOW_LOCKSCREEN: 'lockscreen/show?',
 };
 
+const PASSWORD = 'password="qK8BinizM8M9a3om"';
+
 app.use(cors());
 
-app.get('/', (req, res) => {
-  // payment success
-  // exit lockscreen
-  // CTRL + TAB
-  // if session_end
-  // show lockscreen
-  // CTRL + TAB
+app.get('/', async (req, res) => {
+  ahk = spawn('C:/Program Files/AutoHotkey/AutoHotkey.exe', ['./script.ahk']);
 
   if (req.query.event_type === 'payment_success') {
-    const uri = `${url}${COMMAND.EXIT_LOCKSCREEN}password="qK8BinizM8M9a3om"`;
-
+    const uri = `${url}${COMMAND.EXIT_LOCKSCREEN}${PASSWORD}`;
+    ahk.Move();
     // alt + tab dslrBooth
   }
 
@@ -34,23 +31,13 @@ app.get('/', (req, res) => {
   }
 
   if (req.query.event_type === 'session_end') {
+    const uri = `${url}${COMMAND.SHOW_LOCKSCREEN}${PASSWORD}`;
+    const response = await axios.get(uri);
     // alt + tab to chrome
   }
 });
 
 app.get('/start', async (req, res) => {
-  // var data = new FormData();
-
-  // const config = {
-  //   method: 'get',
-  //   maxBodyLength: Infinity,
-  //   url: 'http://localhost:1500/api/lockscreen/exit?password="qK8BinizM8M9a3om"',
-  //   headers: {
-  //     ...data.getHeaders(),
-  //   },
-  //   data: data,
-  // };
-  // const response = await axios(config);
   const response = await axios.get(
     'http://127.0.0.1:1500/api/lockscreen/exit?password="qK8BinizM8M9a3om"'
   );

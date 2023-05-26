@@ -1,0 +1,5 @@
+Move()
+{ 
+    Send, ^{Tab} 
+    Return
+}
