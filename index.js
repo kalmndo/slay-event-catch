@@ -41,10 +41,10 @@ app.get('/', async (req, res) => {
   if (req.query.event_type === 'session_end') {
     const uri = `${url}${COMMAND.SHOW_LOCKSCREEN}${PASSWORD}`;
     const response = await axios.get(uri);
-    if (response.IsSuccessful) {
-      await keyboard.pressKey(Key.LeftAlt, Key.Tab);
-      await keyboard.releaseKey(Key.LeftAlt, Key.Tab);
-    }
+
+    await keyboard.pressKey(Key.LeftAlt, Key.Tab);
+    await keyboard.releaseKey(Key.LeftAlt, Key.Tab);
+
     // alt + tab to chrome
   }
 });
