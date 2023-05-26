@@ -38,8 +38,8 @@ app.get('/start', async (req, res) => {
   const response = await axios.get(
     'http://127.0.0.1:1500/api/lockscreen/exit?password="qK8BinizM8M9a3om"'
   );
-  await keyboard.pressKey(Key.RightControl, Key.Tab);
-  await keyboard.releaseKey(Key.RightControl, Key.Tab);
+  await keyboard.pressKey(Key.LeftAlt, Key.Tab);
+  await keyboard.releaseKey(Key.LeftAlt, Key.Tab);
   console.log(JSON.stringify(response.data));
 
   res.send('ya aplikasi start');
