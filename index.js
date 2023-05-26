@@ -3,7 +3,7 @@ const axios = require('axios');
 const app = express();
 const port = 3000;
 const cors = require('cors');
-const robot = require('robotjs');
+require('autohotkey.js');
 
 const url = 'http://127.0.0.1:1500/api/';
 
@@ -38,8 +38,7 @@ app.get('/start', async (req, res) => {
   const response = await axios.get(
     'http://127.0.0.1:1500/api/lockscreen/exit?password="qK8BinizM8M9a3om"'
   );
-
-  robot.keyTap(['control', 'tab']);
+  send('^{Tab}');
 
   console.log(JSON.stringify(response.data));
 
