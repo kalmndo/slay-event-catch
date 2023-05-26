@@ -3,7 +3,7 @@ const axios = require('axios');
 const app = express();
 const port = 3000;
 const cors = require('cors');
-const ahk = require('autohotkey.js').init('Name');
+const { keyboard, Key } = require('@nut-tree/nut-js');
 
 const url = 'http://127.0.0.1:1500/api/';
 
@@ -38,8 +38,8 @@ app.get('/start', async (req, res) => {
   const response = await axios.get(
     'http://127.0.0.1:1500/api/lockscreen/exit?password="qK8BinizM8M9a3om"'
   );
-  send('^{Tab}');
-
+  await keyboard.pressKey(Key.RightControl, Key.Tab);
+  await keyboard.releaseKey(Key.RightControl, Key.Tab);
   console.log(JSON.stringify(response.data));
 
   res.send('ya aplikasi start');
