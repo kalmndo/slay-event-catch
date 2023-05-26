@@ -36,8 +36,10 @@ app.get('/', async (req, res) => {
     const uri = `${url}${COMMAND.SHOW_LOCKSCREEN}${PASSWORD}`;
     const response = await axios.get(uri);
 
-    await keyboard.pressKey(Key.LeftAlt, Key.Tab);
-    await keyboard.releaseKey(Key.LeftAlt, Key.Tab);
+    await keyboard.pressKey(Key.LeftControl, Key.LeftWin);
+    await keyboard.pressKey(Key.Left);
+    await keyboard.releaseKey(Key.LeftControl, Key.LeftWin);
+    await keyboard.releaseKey(Key.Left);
   }
 });
 
