@@ -3,7 +3,7 @@ const axios = require('axios');
 const app = express();
 const port = 3000;
 const cors = require('cors');
-require('autohotkey.js');
+const ahk = require('autohotkey.js').init('Name');
 
 const url = 'http://127.0.0.1:1500/api/';
 
