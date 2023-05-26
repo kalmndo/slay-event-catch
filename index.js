@@ -18,7 +18,11 @@ const PASSWORD = 'password=qK8BinizM8M9a3om';
 app.use(cors());
 
 app.get('/', async (req, res) => {
+  console.log('called');
+  console.log('event_type', req.query.event_type);
+
   if (req.query.event_type === 'payment_success') {
+    console.log('trigerred');
     const uri = `${url}${COMMAND.EXIT_LOCKSCREEN}${PASSWORD}`;
     const response = await axios.get(uri);
     if (response.IsSuccessful) {
