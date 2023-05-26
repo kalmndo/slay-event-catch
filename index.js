@@ -14,7 +14,7 @@ app.get('/start', async (req, res) => {
   const config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: 'http://localhost:1500/api/lockscreen/exit',
+    url: 'http://localhost:1500/api/lockscreen/exit?password=""',
     headers: {
       ...data.getHeaders(),
     },
