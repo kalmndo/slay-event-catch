@@ -3,7 +3,7 @@ const axios = require('axios');
 const app = express();
 const port = 3000;
 const cors = require('cors');
-const spawn = require('child_process').spawn;
+const robot = require('robotjs');
 
 const url = 'http://127.0.0.1:1500/api/';
 
@@ -18,11 +18,8 @@ const PASSWORD = 'password="qK8BinizM8M9a3om"';
 app.use(cors());
 
 app.get('/', async (req, res) => {
-  ahk = spawn('C:/Program Files/AutoHotkey/AutoHotkey.exe', ['./script.ahk']);
-
   if (req.query.event_type === 'payment_success') {
     const uri = `${url}${COMMAND.EXIT_LOCKSCREEN}${PASSWORD}`;
-    ahk.Move();
     // alt + tab dslrBooth
   }
 
@@ -41,6 +38,8 @@ app.get('/start', async (req, res) => {
   const response = await axios.get(
     'http://127.0.0.1:1500/api/lockscreen/exit?password="qK8BinizM8M9a3om"'
   );
+
+  robot.keyTap(['control', 'tab']);
 
   console.log(JSON.stringify(response.data));
 

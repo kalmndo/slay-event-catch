@@ -1,5 +1,0 @@
-Move()
-{ 
-    Send, ^{Tab} 
-    Return
-}
