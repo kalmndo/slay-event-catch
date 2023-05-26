@@ -3,6 +3,7 @@ const axios = require('axios');
 const FormData = require('form-data');
 const app = express();
 const port = 3000;
+const cors = require('cors');
 
 const url = 'http://localhost:1500/api/';
 
@@ -11,6 +12,8 @@ const COMMAND = {
   EXIT_LOCKSCREEN: 'lockscreen/exit?',
   SHOW_LOCKSCREEN: 'lockscreen/show?',
 };
+
+app.use(cors());
 
 app.get('/', (req, res) => {
   // payment success
