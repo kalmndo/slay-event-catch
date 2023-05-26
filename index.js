@@ -36,18 +36,21 @@ app.get('/', (req, res) => {
 });
 
 app.get('/start', async (req, res) => {
-  var data = new FormData();
+  // var data = new FormData();
 
-  const config = {
-    method: 'get',
-    maxBodyLength: Infinity,
-    url: 'http://localhost:1500/api/lockscreen/exit?password="qK8BinizM8M9a3om"',
-    headers: {
-      ...data.getHeaders(),
-    },
-    data: data,
-  };
-  const response = await axios(config);
+  // const config = {
+  //   method: 'get',
+  //   maxBodyLength: Infinity,
+  //   url: 'http://localhost:1500/api/lockscreen/exit?password="qK8BinizM8M9a3om"',
+  //   headers: {
+  //     ...data.getHeaders(),
+  //   },
+  //   data: data,
+  // };
+  // const response = await axios(config);
+  const response = await axios.get(
+    'http://localhost:1500/api/lockscreen/exit?password="qK8BinizM8M9a3om"'
+  );
 
   console.log(JSON.stringify(response.data));
 
