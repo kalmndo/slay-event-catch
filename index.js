@@ -26,17 +26,11 @@ app.get('/', async (req, res) => {
     const uri = `${url}${COMMAND.EXIT_LOCKSCREEN}${PASSWORD}`;
     const response = await axios.get(uri);
 
-    await keyboard.pressKey(Key.LeftAlt, Key.Tab);
-    await keyboard.releaseKey(Key.LeftAlt, Key.Tab);
-
-    // alt + tab dslrBooth
+    await keyboard.pressKey(Key.LeftControl, Key.LeftWin);
+    await keyboard.pressKey(Key.Right);
+    await keyboard.releaseKey(Key.LeftControl, Key.LeftWin);
+    await keyboard.releaseKey(Key.Right);
   }
-
-  // if (req.query.event_type === 'session_start') {
-  //   // alt tab chrome
-  //   await keyboard.pressKey(Key.LeftAlt, Key.Tab);
-  //   await keyboard.releaseKey(Key.LeftAlt, Key.Tab);
-  // }
 
   if (req.query.event_type === 'session_end') {
     const uri = `${url}${COMMAND.SHOW_LOCKSCREEN}${PASSWORD}`;
@@ -44,20 +38,7 @@ app.get('/', async (req, res) => {
 
     await keyboard.pressKey(Key.LeftAlt, Key.Tab);
     await keyboard.releaseKey(Key.LeftAlt, Key.Tab);
-
-    // alt + tab to chrome
   }
-});
-
-app.get('/start', async (req, res) => {
-  const response = await axios.get(
-    'http://127.0.0.1:1500/api/lockscreen/exit?password="qK8BinizM8M9a3om"'
-  );
-  await keyboard.pressKey(Key.LeftAlt, Key.Tab);
-  await keyboard.releaseKey(Key.LeftAlt, Key.Tab);
-  console.log(JSON.stringify(response.data));
-
-  res.send('ya aplikasi start');
 });
 
 app.listen(port, () => {
