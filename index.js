@@ -52,7 +52,7 @@ app.get('/start', async (req, res) => {
   // };
   // const response = await axios(config);
   const response = await axios.get(
-    'http://localhost:1500/api/lockscreen/exit?password="qK8BinizM8M9a3om"'
+    'http://127.0.0.1:1500/api/lockscreen/exit?password="qK8BinizM8M9a3om"'
   );
 
   console.log(JSON.stringify(response.data));
