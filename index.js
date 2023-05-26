@@ -26,8 +26,8 @@ app.get('/', async (req, res) => {
     const uri = `${url}${COMMAND.EXIT_LOCKSCREEN}${PASSWORD}`;
     const response = await axios.get(uri);
 
-    await keyboard.pressKey(Key.LeftAlt, Key.Tab);
-    await keyboard.releaseKey(Key.LeftAlt, Key.Tab);
+    await keyboard.pressKey(Key.LeftAlt, Key.LeftWin, Key.Right);
+    await keyboard.releaseKey(Key.LeftAlt, Key.LeftWin, Key.Right);
 
     // alt + tab dslrBooth
   }
@@ -42,8 +42,8 @@ app.get('/', async (req, res) => {
     const uri = `${url}${COMMAND.SHOW_LOCKSCREEN}${PASSWORD}`;
     const response = await axios.get(uri);
 
-    await keyboard.pressKey(Key.LeftAlt, Key.Tab);
-    await keyboard.releaseKey(Key.LeftAlt, Key.Tab);
+    await keyboard.pressKey(Key.LeftAlt, Key.LeftWin, Key.Left);
+    await keyboard.releaseKey(Key.LeftAlt, Key.LeftWin, Key.Left);
 
     // alt + tab to chrome
   }
