@@ -26,8 +26,8 @@ app.get('/', async (req, res) => {
     const uri = `${url}${COMMAND.EXIT_LOCKSCREEN}${PASSWORD}`;
     const response = await axios.get(uri);
 
-    await keyboard.pressKey(Key.LeftControl, Key.LeftWin, Key.Right);
-    await keyboard.releaseKey(Key.LeftControl, Key.LeftWin, Key.Right);
+    await keyboard.pressKey(Key.LeftControl, Key.LeftCmd, Key.Right);
+    await keyboard.releaseKey(Key.LeftControl, Key.LeftCmd, Key.Right);
 
     // alt + tab dslrBooth
   }
